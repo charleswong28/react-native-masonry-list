@@ -16,7 +16,7 @@ import {
 	insertIntoColumn
 } from "./utils";
 
-export default class MasonryList extends React.PureComponent {
+class MasonryList extends React.PureComponent {
 	_calculatedData = [];
 
 	static propTypes = {
@@ -622,6 +622,7 @@ export default class MasonryList extends React.PureComponent {
 	render() {
 		return (
 			<FlatList
+				ref={this.props.listRef}
 				style={{
 					flex: 1,
 					padding: (this.props.layoutDimensions.width / 100) * this.props.spacing / 2,
@@ -689,3 +690,5 @@ export default class MasonryList extends React.PureComponent {
 		);
 	}
 }
+
+export default React.forwardRef((props, ref) => <MasonryList listRef={ref} {...props} />);

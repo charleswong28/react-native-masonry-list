@@ -267,4 +267,5 @@ class Masonry extends React.PureComponent {
     }
 }
 
-export default Masonry;
+export default React.forwardRef((props, ref) => <Masonry listRef={ref} {...props} />);
+
