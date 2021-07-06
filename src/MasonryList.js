@@ -71,6 +71,7 @@ export default class MasonryList extends React.PureComponent {
 	state = {
 		_sortedData: [],
 		_headerComponentHeight: 0,
+		_footerComponentHeight: 0,
 	}
 
 	doneTotal = 0;
@@ -597,7 +598,7 @@ export default class MasonryList extends React.PureComponent {
 		}
 	}
 	
-	_renderListHeader = ()=>{
+	_renderListHeader = () => {
 		return (
 			<View onLayout={(e) => {
 				this.setState({ _headerComponentHeight: e.nativeEvent.layout.height })
@@ -605,6 +606,16 @@ export default class MasonryList extends React.PureComponent {
 				{this.props.ListHeaderComponent}
 			</View>
 		)
+	}
+
+	_renderListFooter = () => {
+		return (
+			<View onLayout={(e) => {
+				this.setState({ _footerComponentHeight: e.nativeEvent.layout.height })
+			}}>
+				{this.props.ListFooterComponent}
+			</View>
+		);
 	}
 
 	render() {
@@ -637,6 +648,12 @@ export default class MasonryList extends React.PureComponent {
 				ListHeaderComponent={ () => this._renderListHeader() }
 				ListHeaderComponentStyle={{
 					top: 0,
+					position:'absolute',
+					width:'100%'
+				}}
+				ListFooterComponent={ () => this._renderListFooter() }
+				ListFooterComponentStyle={{
+					bottom: 0,
 					position:'absolute',
 					width:'100%'
 				}}
