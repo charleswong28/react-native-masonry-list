@@ -71,8 +71,8 @@ class MasonryList extends React.PureComponent {
 
 	state = {
 		_sortedData: [],
-		_headerComponentHeight: 0,
-		_footerComponentHeight: 0,
+		_headerComponentHeight: null,
+		_footerComponentHeight: null,
 	}
 
 	doneTotal = 0;
@@ -662,6 +662,15 @@ class MasonryList extends React.PureComponent {
 				}}
 				data={this.state._sortedData}
 				renderItem={({ item, index }) => {
+					if (
+						(this.props.ListHeaderComponent != null &&
+						this.state._headerComponentHeight == null) ||
+						(this.props.ListFooterComponent != null &&
+						this.state._footerComponentHeight == null)
+					) {
+						return null;
+					}
+					
 					return (
 						<Column
 							data={item}
