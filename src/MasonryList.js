@@ -660,17 +660,13 @@ class MasonryList extends React.PureComponent {
 					position:'absolute',
 					width:'100%'
 				}}
-				data={this.state._sortedData}
-				renderItem={({ item, index }) => {
-					if (
-						(this.props.ListHeaderComponent != null &&
-						this.state._headerComponentHeight == null) ||
-						(this.props.ListFooterComponent != null &&
-						this.state._footerComponentHeight == null)
-					) {
-						return null;
-					}
-					
+				data={(this.props.ListHeaderComponent != null &&
+					this.state._headerComponentHeight == null) ||
+					(this.props.ListFooterComponent != null &&
+					this.state._footerComponentHeight == null) ?
+					[] : this.state._sortedData
+				}
+				renderItem={({ item, index }) => {					
 					return (
 						<Column
 							data={item}
