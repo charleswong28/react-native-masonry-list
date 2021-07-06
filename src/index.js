@@ -14,6 +14,11 @@ class Masonry extends React.PureComponent {
     // masonryListRef;
 
     static propTypes = {
+        listRef: PropTypes.oneOfType([
+			PropTypes.func,
+			PropTypes.shape({ current: PropTypes.instanceOf(Element) })
+		]),
+
         itemSource: PropTypes.array,
         images: PropTypes.array,
         containerWidth: PropTypes.number,
@@ -29,6 +34,8 @@ class Masonry extends React.PureComponent {
 	
 	    ListHeaderComponent: PropTypes.node,
         ListFooterComponent: PropTypes.node,
+        masonryListProps: PropTypes.object,
+        masonryFlatListColProps: PropTypes.object,
 	    
         renderIndividualHeader: PropTypes.oneOfType([
             PropTypes.func,
@@ -38,7 +45,6 @@ class Masonry extends React.PureComponent {
             PropTypes.func,
             PropTypes.node
         ]),
-        masonryFlatListColProps: PropTypes.object,
         rerender: PropTypes.bool,
 
         customImageComponent: PropTypes.oneOfType([
@@ -77,7 +83,9 @@ class Masonry extends React.PureComponent {
         sorted: false,
         backgroundColor: "#fff",
         imageContainerStyle: {},
-        rerender: false
+        rerender: false,
+        masonryListProps: {},
+        masonryFlatListColProps: {},
     }
 
     constructor(props) {
@@ -210,6 +218,7 @@ class Masonry extends React.PureComponent {
                     }
                 }}>
                 <MasonryList
+                    ref={this.props.listRef}
                     layoutDimensions={this.state.layoutDimensions}
                     containerWidth={this.props.containerWidth}
                     itemSource={this.props.itemSource}
@@ -223,6 +232,8 @@ class Masonry extends React.PureComponent {
 
 		            ListHeaderComponent={this.props.ListHeaderComponent}
                     ListFooterComponent={this.props.ListFooterComponent}
+                    masonryFlatListColProps={this.props.masonryFlatListColProps}
+                    masonryListProps={this.props.masonryListProps}
 
                     images={this.props.images}
                     columns={this.props.columns}
@@ -235,7 +246,6 @@ class Masonry extends React.PureComponent {
                     listContainerStyle={this.props.listContainerStyle}
                     renderIndividualHeader={this.props.renderIndividualHeader}
                     renderIndividualFooter={this.props.renderIndividualFooter}
-                    masonryFlatListColProps={this.props.masonryFlatListColProps}
 
                     customImageComponent={this.props.customImageComponent}
                     customImageProps={this.props.customImageProps}

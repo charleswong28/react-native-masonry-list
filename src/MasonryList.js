@@ -42,6 +42,7 @@ export default class MasonryList extends React.PureComponent {
 			PropTypes.node
 		]),
 		masonryFlatListColProps: PropTypes.object,
+		masonryListProps: PropTypes.object,
 		rerender: PropTypes.bool,
 		
 		ListHeaderComponent: PropTypes.node,
@@ -635,7 +636,7 @@ export default class MasonryList extends React.PureComponent {
 				onEndReachedThreshold={this.props.onEndReachedThreshold}
 				refreshing={this.props.refreshing}
 				onRefresh={this.props.onRefresh}
-				{...this.props.masonryFlatListColProps}
+				{...this.props.masonryListProps}
 				onEndReached={this._onCallEndReach}
 				initialNumToRender={
 					this.props.initialColToRender
@@ -671,6 +672,7 @@ export default class MasonryList extends React.PureComponent {
 							key={`MASONRY-COLUMN-${index}`}
 							colIndex={index}
 
+							masonryFlatListColProps={this.props.masonryFlatListColProps}
 							customImageComponent={this.props.customImageComponent}
 							customImageProps={this.props.customImageProps}
 							completeCustomComponent={this.props.completeCustomComponent}
