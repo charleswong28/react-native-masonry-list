@@ -219,7 +219,7 @@ class Masonry extends React.PureComponent {
                     }
                 }}>
                 <MasonryList
-                    ref={this.props.listRef}
+                    ref={ref => this.props.listRef = ref}
                     layoutDimensions={this.state.layoutDimensions}
                     containerWidth={this.props.containerWidth}
                     itemSource={this.props.itemSource}
