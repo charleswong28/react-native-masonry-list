@@ -20,6 +20,11 @@ class MasonryList extends React.PureComponent {
 	_calculatedData = [];
 
 	static propTypes = {
+		listRef: PropTypes.oneOfType([
+			PropTypes.func,
+			PropTypes.shape({ current: PropTypes.instanceOf(Element) })
+		]),
+
 		itemSource: PropTypes.array,
 		images: PropTypes.array.isRequired,
 		layoutDimensions: PropTypes.object.isRequired,
