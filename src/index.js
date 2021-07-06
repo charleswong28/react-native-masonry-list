@@ -205,6 +205,7 @@ class Masonry extends React.PureComponent {
             }
         }
 
+        console.log('this.props.listRef', this.props.listRef);
         return (
             <View style={
                     !this.props.containerWidth

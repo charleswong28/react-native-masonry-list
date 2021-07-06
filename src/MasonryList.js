@@ -625,6 +625,7 @@ class MasonryList extends React.PureComponent {
 	}
 
 	render() {
+		console.log('this.props.listRef2', this.props.listRef);
 		return (
 			<FlatList
 				ref={this.props.listRef}
