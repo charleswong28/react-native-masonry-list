@@ -632,6 +632,7 @@ class MasonryList extends React.PureComponent {
 					flexDirection: "row",
 					width: "100%",
 					paddingTop: this.state._headerComponentHeight,
+					paddingBottom: this.state._footerComponentHeight,
 				}, this.props.listContainerStyle]}
 				removeClippedSubviews={true}
 				onEndReachedThreshold={this.props.onEndReachedThreshold}
