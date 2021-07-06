@@ -625,10 +625,9 @@ class MasonryList extends React.PureComponent {
 	}
 
 	render() {
-		console.log('this.props.listRef2', this.props.listRef);
 		return (
 			<FlatList
-				ref={ref => this.props.listRef = ref}
+				ref={this.props.listRef}
 				style={{
 					flex: 1,
 					padding: (this.props.layoutDimensions.width / 100) * this.props.spacing / 2,
@@ -703,4 +702,4 @@ class MasonryList extends React.PureComponent {
 	}
 }
 
-export default React.forwardRef((props, ref) => <MasonryList listRef={ref} {...props} />);
+export default React.forwardRef((props, ref) => <MasonryList {...props} listRef={ref} />);

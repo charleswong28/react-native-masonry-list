@@ -205,7 +205,6 @@ class Masonry extends React.PureComponent {
             }
         }
 
-        console.log('this.props.listRef', this.props.listRef);
         return (
             <View style={
                     !this.props.containerWidth
@@ -219,7 +218,7 @@ class Masonry extends React.PureComponent {
                     }
                 }}>
                 <MasonryList
-                    ref={ref => this.props.listRef = ref}
+                    ref={this.props.listRef}
                     layoutDimensions={this.state.layoutDimensions}
                     containerWidth={this.props.containerWidth}
                     itemSource={this.props.itemSource}
@@ -268,5 +267,5 @@ class Masonry extends React.PureComponent {
     }
 }
 
-export default React.forwardRef((props, ref) => <Masonry listRef={ref} {...props} />);
+export default React.forwardRef((props, ref) => <Masonry {...props} listRef={ref} />);
 
